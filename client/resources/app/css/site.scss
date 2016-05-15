@@ -95,7 +95,7 @@ $theme-animation-fast: .5s;
     .slider-control {
       position: absolute;
 
-      top: 38%;
+      top: 36%;
       font-size: 50px;
       color: #fff;
 
@@ -262,5 +262,7 @@ $theme-animation-fast: .5s;
     right: 0;
     font-size: 30px;
     color: #777;
+
+    position : absolute;
   }
 }
