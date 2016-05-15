@@ -4,7 +4,7 @@
 var express = require( 'express' );
 var bodyParser = require( 'body-parser' );
 var methodOverride = require( 'method-override' );
-var errorHandler = require( 'error-handler' );
+var errorHandler = require( 'errorhandler' );
 var moment = require( 'moment' );
 
 var app = module.exports = express();
@@ -16,7 +16,7 @@ app.use( function( req, res, next ) {
     var msg = ( req.headers['x-forwarded-for'] || req.connection.remoteAddress ) + ' user from ' +
         req.headers['user-agent'] +
         ' at ' +
-        moment( Date.now() ) ;
+        moment( Date.now() ) + ' requesting ' + req.originalUrl ;
 
     console.log( msg );
 
@@ -47,7 +47,12 @@ if( 'production' === app.get( 'env' ) ) {
     app.use( errorHandler() );
 }
 
+/**
+ * Setting up routes here.
+ */
+var StaticRoutes = require( './server/routes/static-routes' )( app, __dirname );
+
 app.listen( app.get( 'port'), function(){
-    var msgString = 'Magic Happens at port' + app.get( 'port' );
+    var msgString = 'Magic Happens at port ' + app.get( 'port' );
     console.info( msgString );
 });
