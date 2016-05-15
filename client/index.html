@@ -1,52 +1,142 @@
 <!DOCTYPE html>
 <html ng-app="midas">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Air Fresher - Midas</title>
+    <title>Air Freshner - Midas</title>
 
-        <link type="text/css" href="resources/external/css/bootstrap.min.css" rel="stylesheet"/>
-        <link type="text/css" href="resources/app/css/site.css" rel="stylesheet"/>
-    </head>
+    <link type="text/css" href="resources/external/css/bootstrap.min.css" rel="stylesheet"/>
+    <link type="text/css" href="resources/app/css/site.css" rel="stylesheet"/>
+</head>
 
-    <body ng-controller="IndexController">
+<body ng-controller="IndexController">
 
-        <div class="custom-navbar">
-            <div class="container">
+<div class="custom-navbar">
+    <div class="container">
 
-                <div class="hidden-xs visible-sm visible-md visible-lg">
-                    <div class="col-sm-3">
-                        <a href="/" class="brand-name">Midas Air Fresher</a>
-                    </div>
+        <div class="hidden-xs visible-sm visible-md visible-lg">
+            <div class="col-sm-3">
+                <a href="/" class="brand-name">Midas Air Fresher</a>
+            </div>
 
-                    <div class="col-sm-6">
-                        <ul class="nav-links">
-                            <li><a role="button" href="/">Home</a></li>
-                            <li><a role="button" href="/">Products</a></li>
-                            <li><a role="button" href="/">Buyer's Point</a></li>
-                            <li><a role="button" href="/">Contact Us</a></li>
-                        </ul>
-                    </div>
+            <div class="col-sm-6">
+                <ul class="nav-links">
+                    <li><a role="button" href="/">Home</a></li>
+                    <li><a role="button" href="/">Products</a></li>
+                    <li><a role="button" href="/">Buyer's Point</a></li>
+                    <li><a role="button" href="/">Contact Us</a></li>
+                </ul>
+            </div>
 
-                    <div class="col-sm-3">
-
-                    </div>
-                </div>
-
-                <div class="visible-xs hidden-sm hidden-md hidden-lg">
-                    <div class="col-xs-12">
-
-                    </div>
-                </div>
+            <div class="col-sm-3">
 
             </div>
         </div>
 
-        <script type="application/javascript" src="resources/external/js/angular/angular.js"></script>
-        <script type="application/javascript" src="resources/external/js/velocity/velocity.min.js"></script>
+        <div class="visible-xs hidden-sm hidden-md hidden-lg">
+            <div class="col-xs-12">
 
-        <script type="application/javascript" src="resources/app/js/application.js"></script>
-    </body>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="slides-container">
+    <div class="slides">
+        <ul style="width : {{ 100 * runningSlides.length }}%">
+            <li ng-repeat="slide in runningSlides track by $index" style=" width : {{ 100 / runningSlides.length }}%">
+                <img ng-src="{{slide.url}}"/>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="slider-controls">
+        <div class="slider-control left">
+            <i class="fa fa-fw fa-caret-left" ng-click="prev()"></i>
+        </div>
+
+        <div class="slider-control right" ng-click="next()">
+            <i class="fa fa-fw fa-caret-right"></i>
+        </div>
+    </div>
+
+
+    <ol class="slider-jumps">
+        <li ng-repeat="slide in slides" ng-class="{'active' : ( $index == ( activeSlide -1 ))}"
+            ng-click="jump( $index )"></li>
+    </ol>
+
+</div>
+
+<div class="container">
+    <div class="row tmar15">
+        <div class="col-xs-12 col-sm-6">
+            <div class="box">
+                <div class="heading">
+                    Products
+                </div>
+
+                <div class="content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat.
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+            <div class="box">
+                <div class="heading">
+                    Buyer's Point
+                </div>
+
+                <div class="content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="box">
+                <div class="heading">
+                    About Us
+                </div>
+
+                <div class="content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat.
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+
+            <div class="box">
+                <div class="heading">
+                    Contact Us
+                </div>
+
+                <div class="content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="application/javascript" src="resources/external/js/angular/angular.js"></script>
+<script type="application/javascript" src="resources/external/js/velocity/velocity.min.js"></script>
+
+<script type="application/javascript" src="resources/app/js/application.js"></script>
+</body>
 </html>
